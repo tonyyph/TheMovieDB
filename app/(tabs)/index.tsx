@@ -55,7 +55,7 @@ export default function HomeScreen() {
   };
 
   // Filter by search text
-  const filteredMovies = movies.filter((movie) => {
+  const filteredMovies = (movies || []).filter((movie) => {
     if (!searchText.trim()) return true;
     return movie.title.toLowerCase().includes(searchText.toLowerCase());
   });
