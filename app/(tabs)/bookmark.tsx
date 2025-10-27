@@ -9,7 +9,6 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   View
 } from "react-native";
@@ -25,7 +24,6 @@ export default function BookmarkScreen() {
   const [sortBy, setSortBy] = useState<SortOption>("alphabetical");
   const [orderAsc, setOrderAsc] = useState(false);
   const [showSortModal, setShowSortModal] = useState(false);
-  const [searchText, setSearchText] = useState("");
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -49,14 +47,8 @@ export default function BookmarkScreen() {
     }
   };
 
-  // Filter by search text first
-  const filteredWatchlist = watchlist.filter((movie) => {
-    if (!searchText.trim()) return true;
-    return movie.title.toLowerCase().includes(searchText.toLowerCase());
-  });
-
   // Then sort the filtered results
-  const sortedWatchlist = [...filteredWatchlist].sort((a, b) => {
+  const sortedWatchlist = [...watchlist].sort((a, b) => {
     let comparison = 0;
 
     switch (sortBy) {
@@ -130,30 +122,6 @@ export default function BookmarkScreen() {
           <Text weight="bold" style={styles.sectionTitle}>
             My Watchlist
           </Text>
-
-          {/* Search Bar */}
-          <View style={styles.searchContainer}>
-            <Ionicons
-              name="search"
-              size={20}
-              color="#999"
-              style={styles.searchIcon}
-            />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search movies..."
-              placeholderTextColor="#999"
-              value={searchText}
-              onChangeText={setSearchText}
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            {searchText.length > 0 && (
-              <TouchableOpacity onPress={() => setSearchText("")}>
-                <Ionicons name="close-circle" size={20} color="#999" />
-              </TouchableOpacity>
-            )}
-          </View>
 
           {/* Filter Section */}
           <View style={styles.filterSection}>
