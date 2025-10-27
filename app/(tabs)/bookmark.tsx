@@ -1,3 +1,6 @@
+import { Text } from "@/components";
+import { TMDB_IMAGE_BASE_URL } from "@/constants/api";
+import { useWatchlist } from "@/contexts/WatchlistContext";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -12,9 +15,6 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import { Text } from "../../components";
-import { TMDB_IMAGE_BASE_URL } from "../../constants/api";
-import { useWatchlist } from "../../contexts/WatchlistContext";
 
 type SortOption = "alphabetical" | "rating" | "release_date";
 

@@ -1,3 +1,11 @@
+import { Text } from "@/components";
+import { TMDB_IMAGE_BASE_URL } from "@/constants/api";
+import { useWatchlist } from "@/contexts/WatchlistContext";
+import {
+  useMovieCredits,
+  useMovieDetails,
+  useMovieRecommendations
+} from "@/hooks";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -11,14 +19,6 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import { Text } from "../../components";
-import { TMDB_IMAGE_BASE_URL } from "../../constants/api";
-import { useWatchlist } from "../../contexts/WatchlistContext";
-import {
-  useMovieCredits,
-  useMovieDetails,
-  useMovieRecommendations
-} from "../../hooks";
 
 const { height: screenHeight } = Dimensions.get("window");
 
